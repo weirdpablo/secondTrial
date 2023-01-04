@@ -1,3 +1,5 @@
+console.log('This is working')
+
 const texts = []
 const speeds = [50, 65, 80]
 const dots1 = ['.', '..', '...']
