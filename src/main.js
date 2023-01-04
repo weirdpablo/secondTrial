@@ -1,6 +1,8 @@
-console.log('This is working')
+console.log('This is a new message to test the next push')
 
-const texts = []
+const texts = [
+  'Birds are fascinating creatures with a wide variety of shapes, sizes, and behaviors. From the tiny hummingbird to the majestic eagle, there is a bird to suit every taste. Some birds are known for their beautiful songs, while others are prized for their colorful feathers. Many species of birds are also important indicators of the health of the environment, as they are sensitive to changes in their habitat and can provide valuable insights into the overall health of an ecosystem. Whether youre a seasoned birder or just starting to appreciate these feathered friends, there is much to discover and admire about the world of birds',
+]
 const speeds = [50, 65, 80]
 const dots1 = ['.', '..', '...']
 let r = 0
