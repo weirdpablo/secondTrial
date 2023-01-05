@@ -57,4 +57,19 @@ const texts = [
     'Clearing conversations and shutting down.',
 ]
 
+const iframe = [
+  "<iframe src='https://my.spline.design/clonermotioninfraredcopy-942d4da902acba2a461166907061e3df/' frameborder='0' width='100%' height='100%'></iframe>",
+  "<iframe src='https://my.spline.design/colorbox1copy-81c3e3a83f80e1f415741cd93f2a18cd/' frameborder='0' width='100%' height='100%'></iframe>",
+  'Render response timeout. Oops, looks like I wasn’t quick enough.',
+  "<iframe src='https://my.spline.design/squareboxcopy-d0fc27d6b116b64ff0d60e0bfa18c39b/' frameborder='0' width='100%' height='100%'></iframe>",
+  "<iframe src='https://my.spline.design/componentdonutscopy-f48c990c12cb93ee0144c3ecc3268260/' frameborder='0' width='100%' height='100%'></iframe>",
+  'Phew…I currently don’t have enough training to illustrate this equation',
+  "<iframe src='https://my.spline.design/mushroomscopy-4790520aea6637da8537cc495ecf012e/' frameborder='0' width='100%' height='100%'></iframe>",
+  "<iframe src='https://my.spline.design/organicmaterialcopy-0c2767eda3ebb701e0ad627c4ff76149/' frameborder='0' width='100%' height='100%'></iframe>",
+  "<iframe src='https://my.spline.design/lightingstudio1copy-19e2c41f216b0b0d9406188356fc49af/' frameborder='0' width='100%' height='100%'></iframe>",
+  "<iframe src='https://my.spline.design/dominoeffectphysicscopy-1379ca87dee6a6783d6a20647a9f4c35/' frameborder='0' width='100%' height='100%'></iframe>",
+  'Shutting down ...',
+]
+
 console.log(texts)
+console.log(iframe)
