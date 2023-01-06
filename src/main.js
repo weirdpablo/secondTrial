@@ -1,4 +1,3 @@
-console.log('This is a new message to test the next push')
 const texts = [
   'Quantum physics is a branch of physics that deals with the behavior of matter and energy at the atomic and subatomic scale.\n\n' +
     'It is based on the idea that particles, such as atoms and photons, can exhibit both wave-like and particle-like properties, and that their behavior is fundamentally probabilistic rather than deterministic.\n\n' +
@@ -22,6 +21,7 @@ const texts = [
     " 'x = 1' \n\n" +
     'So the solution to this problem is x = 1.\n\n' +
     "I can also handle equations with variables on both sides, inequalities, and systems of equations. Just let me know what you need help with and I'll do my best to assist you.",
+  'Sure thing!',
 
   "Yes, I'd be happy to explain what a torus is. I’ll using doughnuts as an analogy.\n\n" +
     'A torus is a three-dimensional shape that looks like a doughnut. It is formed by rotating a circle around an axis that is perpendicular to the plane of the circle.\n\n' +
@@ -57,7 +57,7 @@ const texts = [
     'Clearing conversations and shutting down.',
 ]
 
-const iframe = [
+const iframes = [
   "<iframe src='https://my.spline.design/clonermotioninfraredcopy-942d4da902acba2a461166907061e3df/' frameborder='0' width='100%' height='100%'></iframe>",
   "<iframe src='https://my.spline.design/colorbox1copy-81c3e3a83f80e1f415741cd93f2a18cd/' frameborder='0' width='100%' height='100%'></iframe>",
   'Render response timeout. Oops, looks like I wasn’t quick enough.',
@@ -71,5 +71,144 @@ const iframe = [
   'Shutting down ...',
 ]
 
-console.log(texts)
-console.log(iframe)
+//the form
+function getInput() {
+  let input = document.getElementById('input-f').value
+
+  if (input) {
+    document.getElementById('answer').innerHTML = input
+    document.getElementById('input-f').value = ''
+  }
+}
+
+//the iframe loop
+let currentIframe = 0
+
+function showNextIframe() {
+  const illustrationDiv = document.getElementById('illustration')
+  illustrationDiv.innerHTML = iframes[currentIframe]
+  currentIframe = (currentIframe + 1) % iframes.length
+}
+
+//the  prepillustration part
+const dots = ['.', '..', '...']
+let p = 0
+let intervalId
+
+function updateDots() {
+  const elements = document.getElementsByClassName('prepIllustration')
+  for (let element of elements) {
+    element.innerHTML = `Preparing illustration <span id='dot'>${dots[p]}</span>`
+  }
+  p = (p + 1) % dots.length
+}
+
+//the typewriter animation
+const speeds = 50
+const dots1 = ['.', '..', '...']
+let r = 0
+let s = 0
+let currentAnimation = -1
+
+function updateDots1() {
+  document.getElementById('dots1').innerHTML = dots1[s]
+  s = (s + 1) % dots1.length
+}
+
+function type(text, speed) {
+  if (r < text.length) {
+    document.getElementById('typewriter').innerText += text.charAt(r)
+    r++
+    autoScroll.scrollTop = autoScroll.scrollHeight
+    setTimeout(function () {
+      type(text, speed)
+    }, speed)
+  } else {
+    document.getElementById('dots1').style.display = 'none'
+  }
+}
+
+function animate(i) {
+  const text = texts[i]
+  const timeout = (i + 1) * 1000
+  r = 0
+  s = 0
+  document.getElementById('typewriter').innerText = ''
+  document.getElementById('dots1').style.display = 'inline'
+  setInterval(updateDots1, 500)
+  setTimeout(function () {
+    type(text, speeds)
+  }, timeout)
+}
+
+//the div block animation
+function revealDivs(containerId, div1Id, div2Id, timeout1, timeout2) {
+  let container = document.getElementById(containerId)
+  if (container) {
+    container.style.display = 'flex'
+  }
+  let previousContainer = document.getElementById(
+    'container' + (previousFunction + 1)
+  )
+  if (previousContainer) {
+    previousContainer.style.display = 'none'
+  }
+  setTimeout(function () {
+    let div1 = document.getElementById(div1Id)
+    if (div1) {
+      div1.style.display = 'block'
+    }
+  }, timeout1)
+  setTimeout(function () {
+    let div1 = document.getElementById(div1Id)
+    if (div1) {
+      div1.style.display = 'none'
+    }
+  }, timeout1 + timeout2)
+  setTimeout(function () {
+    let div2 = document.getElementById(div2Id)
+    if (div2) {
+      div2.style.display = 'block'
+    }
+  }, timeout1 + timeout2)
+}
+
+let revealFunctions = []
+for (let i = 1; i <= 10; i++) {
+  revealFunctions.push(function () {
+    revealDivs('container' + i, 'div' + (i * 2 - 1), 'div' + i * 2, 1000, 8000)
+  })
+}
+
+let previousFunction = revealFunctions.length - 1
+let currentFunction = 0
+
+document
+  .getElementById('starter-button')
+  .addEventListener('click', function () {
+    //the form reset call function
+    getInput()
+
+    //the iframe loop call function
+    showNextIframe()
+
+    //the prepIllustration call function
+    if (intervalId) {
+      clearInterval(intervalId)
+      intervalId = null
+    } else {
+      intervalId = setInterval(updateDots, 500)
+    }
+
+    //the text animation call function
+    currentAnimation = (currentAnimation + 1) % texts.length
+    animate(currentAnimation)
+    revealFunctions[currentFunction]()
+
+    //the div block call function
+    previousFunction = currentFunction
+    currentFunction++
+    if (currentFunction === revealFunctions.length) {
+      currentFunction = 0
+    }
+  })
